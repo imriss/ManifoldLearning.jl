@@ -24,9 +24,7 @@ RUN add-aur docker
 
 RUN pacman -S --needed --noconfirm arpack blas fftw hwloc intel-tbb lapack libgit2 metis numactl openmpi \
      patchelf pcre2 suitesparse \
-  && cd /home/docker \
-  && mkdir sandground \
-  && cd sandground \
+  && cd /home/docker/sandground \
   && wget https://archive.archlinux.org/packages/j/julia/julia-2:0.4.6-1-x86_64.pkg.tar.xz \
   && pacman --needed --noconfirm -U julia-2:0.4.6-1-x86_64.pkg.tar.xz 
 
