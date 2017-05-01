@@ -9,8 +9,18 @@ RUN  pacman -Syyu --noconfirm \
   && pacman -S findutils nano vi --needed --noconfirm \
   && pacman-db-upgrade \
   && export editor=nano \
-  && pacman -S --needed --noconfirm wget gnuplot llvm39 
-  
+  && pacman -S --needed --noconfirm wget gnuplot  
+
+# DDADD https://raw.githubusercontent.com/imriss/scylla/master/aur.sh /usr/sbin/aur.sh
+# DDADD https://raw.githubusercontent.com/imriss/scylla/master/add-aur.sh /usr/sbin/add-aur
+ADD ./aur.sh /usr/sbin/aur.sh
+ADD ./add-aur.sh /usr/sbin/add-aur
+RUN chmod u+x /usr/sbin/aur.sh
+RUN chmod u+x /usr/sbin/add-aur
+RUN add-aur docker
+
+RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm llvm39'
+
 RUN cd /home/docker \
   && mkdir sandground \
   && cd sandground \
