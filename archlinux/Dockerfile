@@ -43,4 +43,5 @@ RUN echo `julia /root/.julia/v0.4/ManifoldLearning/test/lle.jl`
 RUN echo "`ls /root/ -la`" \
   && echo "`ls /home/docker/ -la`"
   
+RUN rm -rd /home/docker/sandground
   
