@@ -31,6 +31,7 @@ RUN pacman -S --needed --noconfirm arpack blas fftw hwloc intel-tbb lapack libgi
   && pacman --needed --noconfirm -U julia-2:0.4.6-1-x86_64.pkg.tar.xz 
 
 RUN cd /home/docker/sandground \
+  && pacman -S --needed --noconfirm cargo \
   && git clone https://github.com/ararslan/julia-pkg \
   && cd julia-pkg \
   && make install
