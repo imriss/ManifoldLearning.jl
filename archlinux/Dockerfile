@@ -38,9 +38,9 @@ RUN cd /home/docker/sandground \
   
 RUN julia-pkg install --git https://github.com/imriss/ManifoldLearning.jl 
 
-RUN echo `julia --verbose /root/.julia/v0.4/ManifoldLearning/test/lle.jl`
+RUN echo `julia /root/.julia/v0.4/ManifoldLearning/test/lle.jl`
 
-RUN echo `ls /root/ -la` \
+RUN echo "`ls /root/ -la`" \
   && echo `ls /home/docker/ -la`
   
   
