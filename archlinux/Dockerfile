@@ -35,6 +35,8 @@ RUN cd /home/docker/sandground \
   && git clone https://github.com/ararslan/julia-pkg \
   && cd julia-pkg \
   && make install
+  
+RUN julia-pkg install --git https://github.com/imriss/ManifoldLearning.jl 
 
 RUN echo `ls /root/ -la` \
   && echo `ls /home/docker/ -la`
