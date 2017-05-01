@@ -27,10 +27,13 @@ RUN pacman -S --needed --noconfirm arpack blas fftw hwloc intel-tbb lapack libgi
   && cd /home/docker \
   && mkdir sandground \
   && cd sandground \
-  && wget https://archive.archlinux.org/packages/j/julia/julia-2:0.4.6-1-x86_64.pkg.tar.xz
-  
+  && wget https://archive.archlinux.org/packages/j/julia/julia-2:0.4.6-1-x86_64.pkg.tar.xz \
+  && pacman --needed --noconfirm -U julia-2:0.4.6-1-x86_64.pkg.tar.xz 
+
 RUN cd /home/docker/sandground \
-  && pacman  --verbose -U julia-2:0.4.6-1-x86_64.pkg.tar.xz 
+  && git clone https://github.com/ararslan/julia-pkg \
+  && cd julia-pkg \
+  && make install
 
 RUN echo `ls /root/ -la` \
   && echo `ls /home/docker/ -la`
