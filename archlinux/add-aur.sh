@@ -24,7 +24,7 @@ sed -i 's,#MAKEFLAGS="-j2",MAKEFLAGS="-j$(nproc)",g' /etc/makepkg.conf
 sed -i "s,PKGEXT='.pkg.tar.xz',PKGEXT='.pkg.tar',g" /etc/makepkg.conf
 
 # install pacaur
-mkdir /home/docker/sandground;
+su $AUR_USER -c 'mkdir /home/docker/sandground'
 su $AUR_USER -c 'cd /home/docker/sandground; bash /usr/sbin/aur.sh -si --noconfirm --needed cower-git pacaur'
 echo "step 1"
 export editor=vi
