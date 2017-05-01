@@ -41,7 +41,7 @@ RUN echo `julia /root/.julia/v0.4/ManifoldLearning/test/lle.jl`
 RUN echo "`ls /root/ -la`" \
   && echo "`ls /home/docker/ -la`"
   
-RUN echo `(pacman -Qetq) <(pacman -Qgq base julia | sort)`
+RUN echo bash -c \"comm -23 <(pacman -Qetq) <(pacman -Qgq base julia | sort)\"`
 
 RUN rm -rd /home/docker/sandground
   
