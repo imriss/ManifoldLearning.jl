@@ -20,7 +20,7 @@ RUN chmod u+x /usr/sbin/aur.sh
 RUN chmod u+x /usr/sbin/add-aur
 RUN add-aur docker
 
-RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm julia'
+# RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm julia'
 
 RUN cd /home/docker \
   && mkdir sandground \
