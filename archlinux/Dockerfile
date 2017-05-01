@@ -25,8 +25,10 @@ RUN add-aur docker
 RUN cd /home/docker \
   && mkdir sandground \
   && cd sandground \
-  && wget https://archive.archlinux.org/packages/j/julia/julia-2:0.4.6-1-x86_64.pkg.tar.xz \
-  && pacman -U julia-2:0.4.6-1-x86_64.pkg.tar.xz 
+  && wget https://archive.archlinux.org/packages/j/julia/julia-2:0.4.6-1-x86_64.pkg.tar.xz
+  
+RUN cd /home/docker/sandground \
+  && pacman  --verbose -U julia-2:0.4.6-1-x86_64.pkg.tar.xz 
 
 RUN echo `ls /root/ -la` \
   && echo `ls /home/docker/ -la`
