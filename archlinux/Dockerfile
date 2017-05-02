@@ -36,16 +36,16 @@ RUN cd /home/docker/sandground \
   
 RUN julia-pkg install --git https://github.com/imriss/ManifoldLearning.jl 
 
-RUN echo `julia /root/.julia/v0.4/ManifoldLearning/test/lle.jl`
-
 RUN echo "`ls /root/ -la`" \
   && echo "`ls /home/docker/ -la`"
   
 RUN /bin/bash -c "cat <(pactree -u julia |sort) <(pacman -Qgq base | sort) |sort -u"
 
-RUN /bin/bash -c "comm -23 <(pacman -Qq) <(cat <(pactree -u julia |sort) <(pacman -Qgq base | sort) |sort -u)"
+RUN /bin/bash -c "comm -23 <(pacman -Qq) <(cat <(pactree -u julia |sort) <(pacman -Qgq base | sort) |sort -u) | pacman -Rdd" \
+  && pacman -Scc --noconfirm
 
 RUN /bin/bash -c "du /usr/lib -hd 1 |sort -h"
 
 RUN rm -rd /home/docker/sandground
   
+RUN echo `julia /root/.julia/v0.4/ManifoldLearning/test/lle.jl`
