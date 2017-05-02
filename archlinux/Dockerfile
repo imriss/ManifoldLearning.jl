@@ -41,7 +41,7 @@ RUN echo "`ls /root/ -la`" \
   
 RUN /bin/bash -c "cat <(pactree -u julia |sort) <(pacman -Qgq base | sort) |sort -u"
 
-RUN /bin/bash -c "comm -23 <(pacman -Qq) <(cat <(pactree -u julia |sort) <(pacman -Qgq base | sort) |sort -u) | xargs pacman -Rdd" \
+RUN /bin/bash -c "comm -23 <(pacman -Qq) <(cat <(pactree -u julia |sort) <(pacman -Qgq base | sort) |sort -u) | xargs pacman -Rdd --noconfirm" \
   && pacman -Scc --noconfirm
 
 RUN /bin/bash -c "du /usr/lib -hd 1 |sort -h"
