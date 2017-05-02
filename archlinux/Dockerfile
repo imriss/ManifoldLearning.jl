@@ -43,5 +43,7 @@ RUN echo "`ls /root/ -la`" \
   
 RUN /bin/bash -c "comm -23 <(pacman -Qetq) <(cat <(pactree -u julia |sort) <(pacman -Qgq base | sort) |sort -u)"
 
+RUN /bin/bash -c "du -hd 1"
+
 RUN rm -rd /home/docker/sandground
   
