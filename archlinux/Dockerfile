@@ -44,7 +44,7 @@ RUN /bin/bash -c "cat <(pactree -u julia |sort) <(pacman -Qgq base | sort) |sort
 RUN /bin/bash -c "comm -23 <(pacman -Qq) <(cat <(pactree -u julia |sort) <(pactree -u pacman |sort) <(pactree -u sudo |sort) <(pacman -Qgq base | sort) |sort -u) | xargs pacman -Rdd --noconfirm" \
   && pacman -Scc --noconfirm \
   &&  rm /var/cache/pacman/pkg/* \
-  &&  rm /root/.cargo/* \
+  &&  rm -rd /root/.cargo/* \
   && paccache -rf 
 
 RUN /bin/bash -c "du /usr -hd 1 |sort -h"
