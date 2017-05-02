@@ -47,7 +47,8 @@ RUN /bin/bash -c "comm -23 <(pacman -Qq) <(cat <(pactree -u julia |sort) <(pactr
   &&  rm -rd /root/.cargo/* \
   && paccache -rf 
 
-RUN /bin/bash -c "du /usr/lib -hd 1 |sort -h"
+# RUN /bin/bash -c "du /usr/lib -hd 1 |sort -h"
+RUN /bin/bash -c "ls /usr/lib -la |sort -h"
 
 RUN rm -rd /home/docker/sandground
   
