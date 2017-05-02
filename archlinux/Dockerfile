@@ -42,9 +42,10 @@ RUN echo "`ls /root/ -la`" \
 RUN /bin/bash -c "cat <(pactree -u julia |sort) <(pacman -Qgq base | sort) |sort -u"
 
 RUN /bin/bash -c "comm -23 <(pacman -Qq) <(cat <(pactree -u julia |sort) <(pactree -u pacman |sort) <(pactree -u sudo |sort) <(pacman -Qgq base | sort) |sort -u) | xargs pacman -Rdd --noconfirm" \
-  && pacman -Scc --noconfirm
+  && pacman -Scc --noconfirm \
+  && paccache -r --noconfirm 
 
-RUN /bin/bash -c "du /usr/lib -hd 1 |sort -h"
+RUN /bin/bash -c "du /usr -hd 1 |sort -h"
 
 RUN rm -rd /home/docker/sandground
   
